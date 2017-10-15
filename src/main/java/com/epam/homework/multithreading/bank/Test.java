@@ -17,7 +17,7 @@ public class Test {
          */
 
         Bank bank = new Bank("Test Bank", 10000);
-        List<Thread> userThreads = formUserThreadsForBank(bank, 3, 100);
+        List<Thread> userThreads = formUserThreadsForBank(bank, 30, 100);
 
         for (Thread thread : userThreads) {
             thread.start();
