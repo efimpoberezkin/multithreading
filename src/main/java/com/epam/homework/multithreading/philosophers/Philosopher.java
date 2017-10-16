@@ -5,48 +5,48 @@ import static java.lang.Thread.sleep;
 public class Philosopher implements Runnable {
 
     private String name;
-    private Spoon leftSpoon;
-    private Spoon rightSpoon;
-    private boolean hasLeftSpoon;
-    private boolean hasRightSpoon;
+    private Spoon firstSpoon;
+    private Spoon secondSpoon;
+    private boolean hasFirstSpoon;
+    private boolean hasSecondSpoon;
 
     public Philosopher(String name, Spoon leftSpoon, Spoon rightSpoon) {
         this.name = name;
-        this.leftSpoon = leftSpoon;
-        this.rightSpoon = rightSpoon;
-        hasLeftSpoon = false;
-        hasRightSpoon = false;
+        this.firstSpoon = leftSpoon;
+        this.secondSpoon = rightSpoon;
+        hasFirstSpoon = false;
+        hasSecondSpoon = false;
     }
 
-    private void takeLeftSpoon() {
-        synchronized (leftSpoon) {
-            if (!leftSpoon.isTaken()) {
-                leftSpoon.setTaken(true);
-                hasLeftSpoon = true;
+    private void takeFirstSpoon() {
+        synchronized (firstSpoon) {
+            if (!firstSpoon.isTaken()) {
+                firstSpoon.setTaken(true);
+                hasFirstSpoon = true;
             }
         }
     }
 
-    private void takeRightSpoon() {
-        synchronized (rightSpoon) {
-            if (!rightSpoon.isTaken()) {
-                rightSpoon.setTaken(true);
-                hasRightSpoon = true;
+    private void takeSecondSpoon() {
+        synchronized (secondSpoon) {
+            if (!secondSpoon.isTaken()) {
+                secondSpoon.setTaken(true);
+                hasSecondSpoon = true;
             }
         }
     }
 
-    private void releaseLeftSpoon() {
-        if (hasLeftSpoon) {
-            leftSpoon.setTaken(false);
-            hasLeftSpoon = false;
+    private void releaseFirstSpoon() {
+        if (hasFirstSpoon) {
+            firstSpoon.setTaken(false);
+            hasFirstSpoon = false;
         }
     }
 
-    private void releaseRightSpoon() {
-        if (hasRightSpoon) {
-            rightSpoon.setTaken(false);
-            hasRightSpoon = false;
+    private void releaseSecondSpoon() {
+        if (hasSecondSpoon) {
+            secondSpoon.setTaken(false);
+            hasSecondSpoon = false;
         }
     }
 
@@ -54,7 +54,7 @@ public class Philosopher implements Runnable {
         System.out.println(name + " thinking");
 
         while (true) {
-            if (hasLeftSpoon && hasRightSpoon) {
+            if (hasFirstSpoon && hasSecondSpoon) {
                 System.out.println(name + " eating");
                 try {
                     sleep(1000);
@@ -62,15 +62,15 @@ public class Philosopher implements Runnable {
                     e.printStackTrace();
                 }
                 System.out.println(name + " thinking");
-                releaseLeftSpoon();
-                releaseRightSpoon();
+                releaseFirstSpoon();
+                releaseSecondSpoon();
             }
             do {
-                takeLeftSpoon();
-            } while (!hasLeftSpoon);
+                takeFirstSpoon();
+            } while (!hasFirstSpoon);
             do {
-                takeRightSpoon();
-            } while (!hasRightSpoon);
+                takeSecondSpoon();
+            } while (!hasSecondSpoon);
         }
     }
 }
