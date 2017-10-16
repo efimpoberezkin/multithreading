@@ -12,6 +12,7 @@ public class BankUser implements Runnable {
         this.withdrawalAmount = withdrawalAmount;
     }
 
+    @Override
     public void run() {
         while (bank.getMoneyAmount() > 0) {
             System.out.println(String.format(
