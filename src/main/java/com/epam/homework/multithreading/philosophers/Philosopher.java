@@ -62,8 +62,8 @@ public class Philosopher implements Runnable {
                     e.printStackTrace();
                 }
                 System.out.println(name + " thinking");
-                releaseFirstSpoon();
                 releaseSecondSpoon();
+                releaseFirstSpoon();
             }
             do {
                 takeFirstSpoon();

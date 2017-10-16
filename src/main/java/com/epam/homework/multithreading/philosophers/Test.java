@@ -18,10 +18,10 @@ public class Test {
         Spoon spoon5 = new Spoon();
 
         Philosopher philosopher1 = new Philosopher("Philosopher 1", spoon1, spoon5);
-        Philosopher philosopher2 = new Philosopher("Philosopher 2", spoon2, spoon1);
-        Philosopher philosopher3 = new Philosopher("Philosopher 3", spoon3, spoon2);
-        Philosopher philosopher4 = new Philosopher("Philosopher 4", spoon4, spoon3);
-        Philosopher philosopher5 = new Philosopher("Philosopher 5", spoon5, spoon4);
+        Philosopher philosopher2 = new Philosopher("Philosopher 2", spoon1, spoon2);
+        Philosopher philosopher3 = new Philosopher("Philosopher 3", spoon2, spoon3);
+        Philosopher philosopher4 = new Philosopher("Philosopher 4", spoon3, spoon4);
+        Philosopher philosopher5 = new Philosopher("Philosopher 5", spoon4, spoon5);
 
         ExecutorService service = Executors.newFixedThreadPool(5);
         service.submit(philosopher1);
