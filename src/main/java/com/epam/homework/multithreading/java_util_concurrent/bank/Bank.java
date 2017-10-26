@@ -27,16 +27,16 @@ public class Bank {
         try {
             if (hasMoney(amount)) {
                 System.out.println(String.format(
-                        "%s: \u2713 Funds of bank %s: %d. Bank has sufficient funds. Withdrawing %d.",
-                        userName, name, moneyAmount, amount));
+                        "%s: <Bank message> \u2713 Funds: %d. Bank has sufficient funds. Giving %d to client.",
+                        userName, moneyAmount, amount));
                 moneyAmount -= amount;
                 System.out.println(String.format(
-                        "%s: Withdrawal operation complete. Withdrew %d from bank %s. Funds of bank: %d.",
-                        userName, amount, name, moneyAmount));
+                        "%s: <Bank message> Withdrawal operation complete. Gave %d to client. Funds: %d.",
+                        userName, amount, moneyAmount));
             } else {
                 System.out.println(String.format(
-                        "%s: \u2717 Funds of bank %s: %d. Bank has insufficient funds. Could not withdraw %d.",
-                        userName, name, moneyAmount, amount));
+                        "%s: <Bank message> \u2717 Funds: %d. Bank has insufficient funds. Could not give %d to client.",
+                        userName, moneyAmount, amount));
             }
 
         } finally {
