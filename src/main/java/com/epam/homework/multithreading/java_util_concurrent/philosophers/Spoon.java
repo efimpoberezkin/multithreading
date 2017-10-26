@@ -6,12 +6,16 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Spoon {
 
     private Lock lock = new ReentrantLock();
+    private Philosopher currentPhilosopher;
 
-    public void use() {
+    public void use(Philosopher philosopher) {
         lock.lock();
+        currentPhilosopher = philosopher;
     }
 
-    public void release() {
-        lock.unlock();
+    public void release(Philosopher philosopher) {
+        if (philosopher == currentPhilosopher) {
+            lock.unlock();
+        }
     }
 }

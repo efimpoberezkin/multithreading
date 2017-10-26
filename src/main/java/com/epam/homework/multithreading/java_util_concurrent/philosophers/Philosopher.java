@@ -19,15 +19,15 @@ public class Philosopher implements Runnable {
         System.out.println(name + " thinking");
 
         while (true) {
-            firstSpoon.use();
-            secondSpoon.use();
+            firstSpoon.use(this);
+            secondSpoon.use(this);
 
             System.out.println(name + " eating");
             pause();
             System.out.println(name + " thinking");
 
-            secondSpoon.release();
-            firstSpoon.release();
+            secondSpoon.release(this);
+            firstSpoon.release(this);
 
             pause();
         }
