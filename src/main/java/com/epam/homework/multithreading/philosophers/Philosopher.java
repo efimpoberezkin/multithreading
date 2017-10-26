@@ -7,47 +7,11 @@ public class Philosopher implements Runnable {
     private String name;
     private Spoon firstSpoon;
     private Spoon secondSpoon;
-    private boolean hasFirstSpoon;
-    private boolean hasSecondSpoon;
 
     public Philosopher(String name, Spoon leftSpoon, Spoon rightSpoon) {
         this.name = name;
         this.firstSpoon = leftSpoon;
         this.secondSpoon = rightSpoon;
-        hasFirstSpoon = false;
-        hasSecondSpoon = false;
-    }
-
-    private void takeFirstSpoon() {
-        synchronized (firstSpoon) {
-            if (!firstSpoon.isTaken()) {
-                firstSpoon.setTaken(true);
-                hasFirstSpoon = true;
-            }
-        }
-    }
-
-    private void takeSecondSpoon() {
-        synchronized (secondSpoon) {
-            if (!secondSpoon.isTaken()) {
-                secondSpoon.setTaken(true);
-                hasSecondSpoon = true;
-            }
-        }
-    }
-
-    private void releaseFirstSpoon() {
-        if (hasFirstSpoon) {
-            firstSpoon.setTaken(false);
-            hasFirstSpoon = false;
-        }
-    }
-
-    private void releaseSecondSpoon() {
-        if (hasSecondSpoon) {
-            secondSpoon.setTaken(false);
-            hasSecondSpoon = false;
-        }
     }
 
     @Override
@@ -55,23 +19,22 @@ public class Philosopher implements Runnable {
         System.out.println(name + " thinking");
 
         while (true) {
-            do {
-                takeFirstSpoon();
-            } while (!hasFirstSpoon);
-            do {
-                takeSecondSpoon();
-            } while (!hasSecondSpoon);
-            if (hasFirstSpoon && hasSecondSpoon) {
-                System.out.println(name + " eating");
-                try {
-                    sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            synchronized (firstSpoon) {
+                synchronized (secondSpoon) {
+                    System.out.println(name + " eating");
+                    pause();
+                    System.out.println(name + " thinking");
                 }
-                System.out.println(name + " thinking");
-                releaseSecondSpoon();
-                releaseFirstSpoon();
             }
+            pause();
+        }
+    }
+
+    private void pause() {
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
