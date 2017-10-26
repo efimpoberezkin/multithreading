@@ -55,6 +55,12 @@ public class Philosopher implements Runnable {
         System.out.println(name + " thinking");
 
         while (true) {
+            do {
+                takeFirstSpoon();
+            } while (!hasFirstSpoon);
+            do {
+                takeSecondSpoon();
+            } while (!hasSecondSpoon);
             if (hasFirstSpoon && hasSecondSpoon) {
                 System.out.println(name + " eating");
                 try {
@@ -66,12 +72,6 @@ public class Philosopher implements Runnable {
                 releaseSecondSpoon();
                 releaseFirstSpoon();
             }
-            do {
-                takeFirstSpoon();
-            } while (!hasFirstSpoon);
-            do {
-                takeSecondSpoon();
-            } while (!hasSecondSpoon);
         }
     }
 }
