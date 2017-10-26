@@ -5,5 +5,13 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Spoon {
 
-    public Lock lock = new ReentrantLock();
+    private Lock lock = new ReentrantLock();
+
+    public void use() {
+        lock.lock();
+    }
+
+    public void release() {
+        lock.unlock();
+    }
 }
