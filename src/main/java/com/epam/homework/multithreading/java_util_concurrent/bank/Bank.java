@@ -7,8 +7,7 @@ public class Bank {
 
     private String name;
     private int moneyAmount;
-
-    public Lock lock = new ReentrantLock();
+    private Lock lock = new ReentrantLock();
 
     public Bank(String name, int moneyAmount) {
         this.name = name;
@@ -23,15 +22,29 @@ public class Bank {
         return moneyAmount;
     }
 
-    public void getMoney(int amount) {
-        if (moneyAmount >= amount) {
-            moneyAmount -= amount;
-        } else {
-            throw new IncorrectWithdrawalException("Credit of bank is exceeded.");
+    public void getMoney(int amount, String userName) {
+        lock.lock();
+        try {
+            if (hasMoney(amount)) {
+                System.out.println(String.format(
+                        "%s: \u2713 Funds of bank %s: %d. Bank has sufficient funds. Withdrawing %d.",
+                        userName, name, moneyAmount, amount));
+                moneyAmount -= amount;
+                System.out.println(String.format(
+                        "%s: Withdrawal operation complete. Withdrew %d from bank %s. Funds of bank: %d.",
+                        userName, amount, name, moneyAmount));
+            } else {
+                System.out.println(String.format(
+                        "%s: \u2717 Funds of bank %s: %d. Bank has insufficient funds. Could not withdraw %d.",
+                        userName, name, moneyAmount, amount));
+            }
+
+        } finally {
+            lock.unlock();
         }
     }
 
-    public boolean hasMoney(int amount) {
+    private boolean hasMoney(int amount) {
         return moneyAmount >= amount;
     }
 }
