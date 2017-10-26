@@ -27,10 +27,6 @@ public class Bank {
     }
 
     public boolean hasMoney(int amount) {
-        if (moneyAmount >= amount) {
-            return true;
-        } else {
-            return false;
-        }
+        return moneyAmount >= amount;
     }
 }
