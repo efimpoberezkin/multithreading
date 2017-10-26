@@ -1,7 +1,4 @@
-package com.epam.homework.multithreading.philosophers;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+package com.epam.homework.multithreading.java1_5.philosophers;
 
 public class Test {
 

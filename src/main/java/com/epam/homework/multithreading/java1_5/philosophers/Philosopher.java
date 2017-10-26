@@ -1,4 +1,4 @@
-package com.epam.homework.multithreading.philosophers;
+package com.epam.homework.multithreading.java1_5.philosophers;
 
 import static java.lang.Thread.sleep;
 

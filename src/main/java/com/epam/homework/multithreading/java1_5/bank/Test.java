@@ -1,4 +1,4 @@
-package com.epam.homework.multithreading.bank;
+package com.epam.homework.multithreading.java1_5.bank;
 
 import java.util.ArrayList;
 import java.util.List;
