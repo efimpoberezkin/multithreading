@@ -1,7 +1,7 @@
 package com.epam.homework.multithreading.java1_5.bank;
 
 public class Bank {
-
+    //поле может быть final
     private String name;
     private int moneyAmount;
 
