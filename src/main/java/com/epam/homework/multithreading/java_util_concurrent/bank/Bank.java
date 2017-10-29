@@ -4,9 +4,14 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Bank {
-
+    //поле может быть final
     private String name;
+    //В будущем стоит изучить необходимость использования volatile для подобных переменных
+    //В реальном продакшене без volatile это не будет работать
     private int moneyAmount;
+    //Рекомендуется все final поля (aka. конфигурацию-сервисы) объявлять выше не final,
+    //отделяя таким образом поля состояния от полей от конфигурации
+    //поле может быть final
     private Lock lock = new ReentrantLock();
 
     public Bank(String name, int moneyAmount) {
@@ -44,6 +49,7 @@ public class Bank {
         }
     }
 
+    //Ошибка - метод производит незащищённый конкурентный доступ к данным.
     private boolean hasMoney(int amount) {
         return moneyAmount >= amount;
     }

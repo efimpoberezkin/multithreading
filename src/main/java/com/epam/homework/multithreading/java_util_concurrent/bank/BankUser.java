@@ -1,7 +1,7 @@
 package com.epam.homework.multithreading.java_util_concurrent.bank;
 
 public class BankUser implements Runnable {
-
+    //Все поля ниже могут быть final
     private String name;
     private Bank bank;
     private int withdrawalAmount;

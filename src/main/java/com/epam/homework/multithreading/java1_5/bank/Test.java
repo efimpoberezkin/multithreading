@@ -9,6 +9,7 @@ public class Test {
         perform_test();
     }
 
+    //нарушение JСС по именованию методов.
     private static void perform_test() {
 
         /*

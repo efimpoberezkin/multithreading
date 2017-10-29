@@ -1,9 +1,11 @@
 package com.epam.homework.multithreading.java1_5.bank;
 
 public class BankUser implements Runnable {
-
+    //поле может быть final
     private String name;
+    //поле должно быть final
     private Bank bank;
+    //поле может быть final
     private int withdrawalAmount;
 
     public BankUser(String name, Bank bank, int withdrawalAmount) {

@@ -14,8 +14,13 @@ public class Spoon {
     }
 
     public void release(Philosopher philosopher) {
+        //Этот if не защищает от того, что неавторизованный философ опустит ложку.
+        //Неатомарное исполнение 12-3 строки и 19-20 могут привести к этому
         if (philosopher == currentPhilosopher) {
             lock.unlock();
         }
+        //Если придерживаться этого решения, то:
+        //1. нужно делать что-то типа compareAndSet
+        //2. нужно выставлять в null значение currentPhilosopher на release
     }
 }

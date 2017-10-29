@@ -3,9 +3,11 @@ package com.epam.homework.multithreading.java1_5.philosophers;
 import static java.lang.Thread.sleep;
 
 public class Philosopher implements Runnable {
-
+    //поле может быть final
     private String name;
+    //поле должно быть final
     private Spoon firstSpoon;
+    //поле должно быть final
     private Spoon secondSpoon;
 
     public Philosopher(String name, Spoon leftSpoon, Spoon rightSpoon) {
