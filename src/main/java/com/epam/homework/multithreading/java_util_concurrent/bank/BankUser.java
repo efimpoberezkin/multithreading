@@ -2,9 +2,9 @@ package com.epam.homework.multithreading.java_util_concurrent.bank;
 
 public class BankUser implements Runnable {
 
-    final private String name;
-    final private Bank bank;
-    final private int withdrawalAmount;
+    private final String name;
+    private final Bank bank;
+    private final int withdrawalAmount;
 
     public BankUser(String name, Bank bank, int withdrawalAmount) {
         this.name = name;

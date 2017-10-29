@@ -6,7 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Spoon {
 
-    final private Lock lock = new ReentrantLock();
+    private final Lock lock = new ReentrantLock();
 
     private AtomicReference<Philosopher> currentPhilosopher = new AtomicReference<>();
 

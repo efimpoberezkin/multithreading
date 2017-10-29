@@ -2,7 +2,7 @@ package com.epam.homework.multithreading.java1_5.bank;
 
 public class Bank {
 
-    final private String name;
+    private final String name;
 
     private int moneyAmount;
 
