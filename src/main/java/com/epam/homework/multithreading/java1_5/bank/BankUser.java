@@ -1,5 +1,7 @@
 package com.epam.homework.multithreading.java1_5.bank;
 
+import static java.lang.Thread.sleep;
+
 public class BankUser implements Runnable {
 
     private final String name;
@@ -33,6 +35,15 @@ public class BankUser implements Runnable {
                     break;
                 }
             }
+            pause();
+        }
+    }
+
+    private void pause() {
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
