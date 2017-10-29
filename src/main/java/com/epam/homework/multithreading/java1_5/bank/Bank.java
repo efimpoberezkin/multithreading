@@ -4,7 +4,7 @@ public class Bank {
 
     private final String name;
 
-    private int moneyAmount;
+    private volatile int moneyAmount;
 
     public Bank(String name, int moneyAmount) {
         this.name = name;

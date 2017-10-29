@@ -8,7 +8,7 @@ public class Bank {
     private final String name;
     private final Lock lock = new ReentrantLock();
 
-    private int moneyAmount;
+    private volatile int moneyAmount;
 
     public Bank(String name, int moneyAmount) {
         this.name = name;
