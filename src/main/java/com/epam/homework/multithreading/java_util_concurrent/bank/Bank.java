@@ -5,9 +5,10 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Bank {
 
-    private String name;
+    final private String name;
+    final private Lock lock = new ReentrantLock();
+
     private int moneyAmount;
-    private Lock lock = new ReentrantLock();
 
     public Bank(String name, int moneyAmount) {
         this.name = name;

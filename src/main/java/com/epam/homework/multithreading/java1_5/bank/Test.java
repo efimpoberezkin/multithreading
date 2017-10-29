@@ -6,10 +6,10 @@ import java.util.List;
 public class Test {
 
     public static void main(String[] args) {
-        perform_test();
+        performTest();
     }
 
-    private static void perform_test() {
+    private static void performTest() {
 
         /*
          * For easy reproducibility of incorrect withdrawal exception all users of a specific bank

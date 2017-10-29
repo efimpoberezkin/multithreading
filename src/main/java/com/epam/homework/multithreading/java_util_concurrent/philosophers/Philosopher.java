@@ -4,9 +4,9 @@ import static java.lang.Thread.sleep;
 
 public class Philosopher implements Runnable {
 
-    private String name;
-    private Spoon firstSpoon;
-    private Spoon secondSpoon;
+    final private String name;
+    final private Spoon firstSpoon;
+    final private Spoon secondSpoon;
 
     public Philosopher(String name, Spoon leftSpoon, Spoon rightSpoon) {
         this.name = name;

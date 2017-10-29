@@ -3,10 +3,10 @@ package com.epam.homework.multithreading.java1_5.philosophers;
 public class Test {
 
     public static void main(String[] args) {
-        perform_test();
+        performTest();
     }
 
-    private static void perform_test() {
+    private static void performTest() {
 
         Spoon spoon1 = new Spoon();
         Spoon spoon2 = new Spoon();

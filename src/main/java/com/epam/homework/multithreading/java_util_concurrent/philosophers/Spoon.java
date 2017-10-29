@@ -5,7 +5,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Spoon {
 
-    private Lock lock = new ReentrantLock();
+    final private Lock lock = new ReentrantLock();
+
     private Philosopher currentPhilosopher;
 
     public void use(Philosopher philosopher) {
