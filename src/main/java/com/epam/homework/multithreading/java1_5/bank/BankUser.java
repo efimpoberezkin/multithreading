@@ -14,10 +14,7 @@ public class BankUser implements Runnable {
 
     @Override
     public void run() {
-        while (bank.getMoneyAmount() > 0) {
-            System.out.println(String.format(
-                    "%s: Going to withdraw %d from bank %s. Funds of bank: %d.",
-                    name, withdrawalAmount, bank.getName(), bank.getMoneyAmount()));
+        while (true) {
             synchronized (bank) {
                 if (bank.hasMoney(withdrawalAmount)) {
                     System.out.println(String.format(
@@ -31,6 +28,9 @@ public class BankUser implements Runnable {
                     System.out.println(String.format(
                             "%s: \u2717 Funds of bank %s: %d. Bank has insufficient funds. Could not withdraw %d.",
                             name, bank.getName(), bank.getMoneyAmount(), withdrawalAmount));
+                }
+                if (!(bank.getMoneyAmount() > 0)) {
+                    break;
                 }
             }
         }
